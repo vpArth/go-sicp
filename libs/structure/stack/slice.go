@@ -1,7 +1,6 @@
 package stack
 
 import (
-	"errors"
 	"sync"
 )
 
@@ -34,7 +33,7 @@ func (s *Slice[T]) Pop() (el T, err error) {
 	defer s.lock.Unlock()
 
 	if len(s.elements) == 0 {
-		return el, errors.New("empty stack")
+		return el, ErrorStackEmpty
 	}
 	el, s.elements = s.elements[len(s.elements)-1], s.elements[:len(s.elements)-1]
 

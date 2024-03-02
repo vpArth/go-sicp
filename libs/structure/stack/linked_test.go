@@ -7,11 +7,11 @@ import (
 	"testing"
 )
 
-func TestSlice(t *testing.T) {
+func TestLinked(t *testing.T) {
 	t.Parallel()
 	t.Run("PushPop", func(t *testing.T) {
 		t.Parallel()
-		s := stack.NewSlice[int]()
+		s := stack.NewLinked[int]()
 		s.Push(1)
 		s.Push(2)
 		s.Push(3)
@@ -31,7 +31,7 @@ func TestSlice(t *testing.T) {
 	t.Run("Concurrency", func(t *testing.T) {
 		t.Parallel()
 
-		s := stack.NewSlice[int]()
+		s := stack.NewLinked[int]()
 		const N = 100
 
 		var wgPush sync.WaitGroup
